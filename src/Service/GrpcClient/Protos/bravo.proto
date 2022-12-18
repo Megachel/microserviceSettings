@@ -1,0 +1,25 @@
+syntax="proto3";
+
+option php_namespace = "Service\\GrpcClient\\Bravo";
+
+package bravo;
+
+service Bravo {
+  rpc GetSettings (EmptyRequest) returns (SettingsReply) {}
+  rpc SetSettings (SettingsRequest) returns (SettingsReply) {}
+}
+
+message EmptyRequest {
+}
+
+message SettingsRequest {
+  string field1 = 1;
+  bool field2 = 2;
+  int32 field3 = 3;
+}
+
+message SettingsReply {
+  string field1 = 1;
+  bool field2 = 2;
+  int32 field3 = 3;
+}
