@@ -1,2 +1,23 @@
 {% extends 'base.html.twig' %}
 
+{% block body %}
+    {% for microservice in microservices %}
+        <h3>{{ microservice.name }}</h3>
+        <ul>
+        {% for settingName, setting in microservice.settings.all %}
+            <li>
+                {% if setting is iterable %}
+                    <ul>
+                    {% for settingKey, settingValue in setting %}
+                        <li>{{ settingKey }}: {{ settingValue }}</li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    {{ settingName }}:
+                    {{ setting }}
+                {% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+{% endblock %}

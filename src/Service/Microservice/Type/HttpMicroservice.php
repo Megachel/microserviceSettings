@@ -5,12 +5,12 @@ namespace App\Service\Microservice\Type;
 use App\Dto\Setting\SettingsCollection;
 use App\Dto\Setting\SettingsCollectionBuilder;
 use App\Dto\Setting\SettingsDynamicCollectionBuilder;
-use App\Service\Microservice\DataSource\DataSourceInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class HttpMicroservice implements MicroserviceTypeInterface
 {
     public function __construct(
+        private readonly string $name,
         private readonly HttpClientInterface $httpClient,
         private string $endpoint,
         private readonly array $fields,
@@ -19,8 +19,6 @@ class HttpMicroservice implements MicroserviceTypeInterface
         if (!filter_var($this->endpoint, FILTER_VALIDATE_URL)) {
             throw new \Exception(sprintf('Wrong endpoint "%s"', $this->endpoint));
         }
-
-        $this->endpoint = 'http://127.0.0.1:8000/http';
     }
 
     public function getSettings(): SettingsCollection
@@ -37,4 +35,18 @@ class HttpMicroservice implements MicroserviceTypeInterface
         return $result;
     }
 
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function saveSetting(string $key, mixed $value)
+    {
+        // TODO: Implement saveSetting() method.
+    }
+
+    public function saveAllSettings(array $array): bool
+    {
+        // TODO: Implement saveAllSettings() method.
+    }
 }

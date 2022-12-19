@@ -9,7 +9,7 @@ class SettingsCollectionBuilder
         $settings = new SettingsCollection();
 
         foreach ($mapping as $name => $type) {
-            if (!isset($array[$name]) || !self::validate($type, $array[$name])) {
+            if (!isset($array[$name]) || !self::validate($array[$name], $type)) {
                 continue;
             }
             $settings->set($name, $array[$name]);

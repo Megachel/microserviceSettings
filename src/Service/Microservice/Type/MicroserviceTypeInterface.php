@@ -11,4 +11,7 @@ interface MicroserviceTypeInterface
 //    public function getSetting(string $key);
 
 //    public function setSetting(string $key, mixed $value);
+    public function saveSetting(string $key, mixed $value);
+
+    public function saveAllSettings(array $array): bool;
 }

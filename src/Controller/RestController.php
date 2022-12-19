@@ -17,4 +17,10 @@ class RestController extends AbstractController
             'field3' => ['test1', 'test2']
         ]);
     }
+
+    #[Route('/rest', name: 'rest', methods: 'POST')]
+    public function save(): Response
+    {
+        return new Response('', 200);
+    }
 }

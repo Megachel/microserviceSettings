@@ -13,6 +13,7 @@ class GrpcMicroservice implements MicroserviceTypeInterface
     private BaseStub $client;
 
     public function __construct(
+        private readonly string $name,
         string $host,
         string $clientClass,
         private readonly array $fields,
@@ -31,5 +32,20 @@ class GrpcMicroservice implements MicroserviceTypeInterface
     private function fetchAllSettings(): array
     {
         return [];
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function saveSetting(string $key, mixed $value)
+    {
+        // TODO: Implement saveSetting() method.
+    }
+
+    public function saveAllSettings(array $array): bool
+    {
+        // TODO: Implement saveAllSettings() method.
     }
 }

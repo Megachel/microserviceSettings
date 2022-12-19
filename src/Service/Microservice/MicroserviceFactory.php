@@ -24,9 +24,9 @@ class MicroserviceFactory
 
 //        dd($config);
         switch ($config['type']){
-            case MicroserviceType::REST: return new RestMicroservice($this->httpClient, $config['endpoint'], $config['fields']);
-            case MicroserviceType::HTTP: return new HttpMicroservice($this->httpClient, $config['endpoint'], $config['fields']);
-            case MicroserviceType::gRPC: return new GrpcMicroservice($config['host'], $config['client'], $config['fields']);
+            case MicroserviceType::REST: return new RestMicroservice($name, $this->httpClient, $config['endpoint'], $config['fields']);
+            case MicroserviceType::HTTP: return new HttpMicroservice($name, $this->httpClient, $config['endpoint'], $config['fields']);
+//            case MicroserviceType::gRPC: return new GrpcMicroservice($name, $config['host'], $config['client'], $config['fields']);
         }
 
         throw new MicroserviceNotFoundException(sprintf('Microservice type "%s" with name "%s" not found', $config['type']->name, $name));
